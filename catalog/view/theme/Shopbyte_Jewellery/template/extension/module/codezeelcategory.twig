@@ -1,0 +1,56 @@
+<div id="verticalmenublock" class="box category box-category {% if ishome %} open {% endif %}">
+  <div class="box-heading" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="categorymenu-dropdown">{{ heading_title }}<span class="dropdown-arrow"></span></div>
+  	<div class="box-content categorymenu_block dropdown-menu" aria-labelledby="verticalmenu-dropdown">
+<ul id="nav-one" class="dropmenu box-category">
+  {% for category in categories %}
+        {% if category.children %}
+			<li class="top_level dropdown main"><a href="{{ category.href }}">{{ category.name }}</a>
+
+			<div class="dropdown-menu megamenu column{{ category.column }}">
+            <div class="dropdown-inner">
+              {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+				<ul class="list-unstyled childs_1">
+                {% for child in children %}
+					<!-- 2 Level Sub Categories START -->
+					{% if child.childs %}
+					  <li class="dropdown"><a href="{{ child.href }}">{{ child.name }}</a>
+
+						  <div class="dropdown-menu">
+			              <div class="dropdown-inner">
+			              {% for childs_col in child.childs|batch(child.childs|length / child.column|round(1, 'ceil')) %}
+							<ul class="list-unstyled childs_2">
+							  {% for childs_2 in childs_col %}
+								<li><a href="{{ childs_2.href }}">{{ childs_2.name }}</a></li>
+							  {% endfor %}
+							</ul>
+						  {% endfor %}
+						  </div>
+						  </div>
+
+					  </li>
+					{% else %}
+					  <li><a href="{{ child.href }}">{{ child.name }}</a></li>
+					{% endif %}
+					<!-- 2 Level Sub Categories END -->
+                {% endfor %}
+              
+			    </ul>
+              {% endfor %}
+            </div>
+			</div>
+
+			</li>
+        {% else %}
+			<li class="top_level main"><a href="{{ category.href }}">{{ category.name }}</a></li>
+        {% endif %}
+        {% endfor %}
+		{% if blog_enable %}
+       	<li class="top_level main"> <a href="{{ all_blogs }}">{{ text_blog }}</a></li>       
+		{% endif %}
+ </ul>
+  </div>
+</div>
+
+
+
+

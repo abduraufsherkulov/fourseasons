@@ -1,0 +1,63 @@
+{{ header }}
+<div class="content-top">
+		<div class="home-container">
+			{{ content_top }}
+	</div>
+</div>
+
+<div class="row home_row">
+	{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">
+			{{ content_bottom }}
+	</div>
+    {{ column_right }}
+</div>
+
+{#<span class="testimonial_default_width" style="display: none; visibility: hidden;"></span>#}
+
+{{ footer }}
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#ourcategory-carousel').owlCarousel({
+				items: 5,
+				singleItem: false,
+				navigation: true,
+				pagination: false,
+				autoPlay: true,
+				itemsDesktop : [1459,4], 
+				itemsDesktopSmall : [991,3],
+				itemsTablet : [767,3],
+				itemsTabletSmall : [680,2],
+				itemsMobile : [480,1] 
+			});
+
+			$('.brand-carousel').owlCarousel({
+			items: 7,
+			singleItem: false,
+			navigation: false,
+			pagination: false,
+			itemsDesktop : [1229,5],
+			itemsDesktopSmall :	[991,4],
+			itemsTablet :	[575,2],
+			itemsMobile : [479,1] 
+			}); 
+			
+			$('#additional-carousel').owlCarousel({
+			items: 3,
+			singleItem: false,
+			navigation: false,
+			pagination: false,
+			itemsDesktop : [1229,3],
+			itemsDesktopSmall :	[991,3],
+			itemsTablet :	[575,2],
+			itemsMobile : [479,1] 
+			}); 
+	});	
+</script>
