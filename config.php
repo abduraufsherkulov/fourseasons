@@ -1,14 +1,18 @@
 <?php
+$host = $_SERVER['HTTP_HOST'];
+
 // HTTP
-define('HTTP_SERVER', 'http://localhost/fourseasons/');
+define('HTTP_SERVER', 'http://'.$host.'/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://localhost/fourseasons/');
+define('HTTPS_SERVER', 'https://'.$host.'/');
+
 
 // DIR
-define('DIR_APPLICATION', 'C:/xampp/htdocs/fourseasons/catalog/');
-define('DIR_SYSTEM', 'C:/xampp/htdocs/fourseasons/system/');
-define('DIR_IMAGE', 'C:/xampp/htdocs/fourseasons/image/');
+$dir = dirname(dirname(__FILE__));
+define('DIR_APPLICATION', $dir . '/4seasons/catalog/');
+define('DIR_SYSTEM', $dir . '/4seasons/system/');
+define('DIR_IMAGE', $dir . '/4seasons/image/');
 define('DIR_STORAGE', DIR_SYSTEM . 'storage/');
 define('DIR_LANGUAGE', DIR_APPLICATION . 'language/');
 define('DIR_TEMPLATE', DIR_APPLICATION . 'view/theme/');
@@ -23,8 +27,8 @@ define('DIR_UPLOAD', DIR_STORAGE . 'upload/');
 // DB
 define('DB_DRIVER', 'mysqli');
 define('DB_HOSTNAME', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '442637837421');
-define('DB_DATABASE', 'fourseasons');
+define('DB_USERNAME', 'chust_bijuteriya');
+define('DB_PASSWORD', '53Dzxx?9');
+define('DB_DATABASE', 'chust-pichoq_uz_bijuteriya');
 define('DB_PORT', '3306');
 define('DB_PREFIX', 'oc_');
